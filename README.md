@@ -4,22 +4,23 @@
 
 It keeps compatible games fully credited up at all times, perfect for arcade games that either lack a Free Play mode, or are missing features in Free Play mode that are present in Credit mode.
 
-It's designed for games with a **credit limit** that controls a **coin blocker** relay - when the game is accepting credits, this board triggers the coin input until the game hits the credit limit and stops accepting coins. Once you play the game (and thus it is under the credit limit again), another coin is inserted to put the game at the credit limit again.
+It's designed solely for games with a **credit limit** that control a **coin blocker** relay based on this limit. If the game isn't at its credit limit, it powers the coin blocker relay (and thus the PFC PCB), which inserts credits until the credit limit is reached, and the game turns off the coin blocker relay. 
 
 ---
 ## Compatibility/Installation
 
-Note: This board design is very new and has not been thoroughly tested. Proceed with caution!
+Note: This board design works, but has recevied only limited testing. Proceed with caution!
 
 ### Compatibility List
 This board is **compatible** with:
  - ✅ CHUNITHM PARADISE LOST
- - ✅ crossbeats REV. SUNRISE S2
+ - ✅ crossbeats REV. SUNRISE S2*
 
-This board is **incompatible** with (as they have no credit limit):
+This board is **incompatible** with games that have a coin blocker relay, but no credit limit:
  - ❌ SOUND VOLTEX EXCEED GEAR
  - ❌ jubeat festo
 
+*\* crossbeats: This board will continuously insert credits in test mode, since the game always powers the coin blocker in test mode regardless of the credit limit.*
 
 ### Checking Compatibility
 **For games not on the list, your game MUST:**
@@ -30,63 +31,24 @@ This board is **incompatible** with (as they have no credit limit):
  
  - Turn on the relay when the game enters attract mode (you'll hear it click on)
  
- - **Has a credit limit, and will turn off the	Coin Blocker when this limit is reached** (this is not always the case)!
+ - **Have a credit limit, and will turn off the Coin Blocker when this limit is reached** (this is not always the case)!
 
 In modern games, the relay can usually be toggled on/off in the game's test mode (look for an "Output Test" menu).
 
-
-### To Install:
- 1) Identify the positive and negative wires that power the coin blocker, using either a multimeter or the game's schematics.
- 
- 2) Power off the game and disconnect the coin blocker. Connect the coin blocker wires to the power input terminals on the PFC board.
-   - Connect positive to the red power terminal on the board, negative to white. __Reversing the two may damage the PFC board.__
- 3) Attach the wires going to the coin switch itself to the "Coin Out" terminals on the PFC board.
- 
-   - Like the coin blocker, connect negative (usually black) to white, positive to red. Reversing the two shouldn't damage anything, but the board will not function.
+---
+## Fabrication
+**[See FABRICATION.md](FABRICATION.md) for instructions on how to fabricate this design!**
 
 
-### For 5V Coin Blocker Installation:
-If your game uses a 5V coin blocker relay (do these even exist?), you must bypass the on-board voltage regulator.
+---
+## Installation
+**[See INSTALLATION.md](INSTALLATION.md) for instructions on how to install this board in your game!**
 
-1) Cut the "5V Reg Bypass" and "5V Reg Enable" jumpers on the right side of the board with an x-acto knife. Check that the two pads of each jumper have NO continuity with a multimeter.
-
-2) Bridge the bottom two pads of the "5V Reg Bypass" jumper with solder, leaving the top pad disconnected.
-
-With these mods, the PFC board will *only* accept 5V power input. __Higher voltages will damage the PFC Board__.
-To revert this mod, reverse these steps.
-
-
-### Speed Adjustment
-Turn the dial between the Power and Coin terminals with a small screwdriver to adjust the rate that the PFC board inserts coins at.
-
-This is mostly up to personal preference, but may help with troubleshooting game-specific compatiblity.
 
 
 ---
 ## Troubleshooting
-
-Two LEDs are on the board to assist with troubleshooting.
-
-### Power LED never lights, game does not coin up
-Check the power connections to the PFC board. Ensure they are not reversed.
-
-Ensure the game's coin blocker output is working (via multimeter or by re-connecting the coin blocker relay), and that the voltage it outputs is in the right voltage range for the PFC board. 5V coin blockers require the modification described above.
-
-
-### Power LED lights and coin LED blinks, but coins do not insert.
-Check the coin connections to the PFC board. Try swapping the two coin wires around.
-
-Some games may not accept coins when in test mode, regardless of the coin blocker state.
-
-### PFC board keeps inserting coins even if the game isn't fully booted/after the credit limit is reached
-Check that the PFC board is connected to the coin blocker signal and not to wires that are always receiving power (like for a lamp, coin acceptor power, etc).
-
-Some games continue to accept coins, even when the credit display maxes out "99" coins. These games are incompatible with the Perpetual Free Credits board.
-
-Some games may not accept coins when in test mode, regardless of the coin blocker state.
-
-### Power LED on, Coin LED either stays lit or never lights
-The PFC board's timing circuit is not working. If adjusting the speed adjustment dial does not fix this, the PFC board must be repaired.
+**[See TROUBLESHOOTING.md](TROUBLESHOOTING.md) for instructions on how to troubleshoot common issues!**
 
 
 ---
