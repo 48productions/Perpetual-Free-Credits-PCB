@@ -9,16 +9,18 @@ It's designed solely for games with a **credit limit** that control a **coin blo
 ---
 ## Compatibility/Installation
 
-Note: This board design works, but has recevied only limited testing. Proceed with caution!
-
 ### Compatibility List
 This board is **compatible** with:
- - ✅ CHUNITHM PARADISE LOST
- - ✅ crossbeats REV. SUNRISE S2*
+ - ✅ CHUNITHM (tested on NEW!! and many pre-NEW!! versions)
+ - ✅ Middle Earth (Atari pinball)
+ - ✅ crossbeats REV. (tested on SUNRISE S2)*
+ - ✅ Probably a lot of others :D
 
 This board is **incompatible** with games that have a coin blocker relay, but no credit limit:
- - ❌ SOUND VOLTEX EXCEED GEAR
- - ❌ jubeat festo
+ - ❌ SOUND VOLTEX (tested on EXCEED GEAR)
+ - ❌ jubeat (tested on festo)
+
+An alternative design is being considered for these games.
 
 *\* crossbeats: This board will continuously insert credits in test mode, since the game always powers the coin blocker in test mode regardless of the credit limit.*
 
@@ -34,6 +36,10 @@ This board is **incompatible** with games that have a coin blocker relay, but no
  - **Have a credit limit, and will turn off the Coin Blocker when this limit is reached** (this is not always the case)!
 
 In modern games, the relay can usually be toggled on/off in the game's test mode (look for an "Output Test" menu).
+
+---
+## Alternative Designs
+[ChunUp](https://github.com/progmem/ChunUp) is a very clean and cost-reduced design geared specifically for CHUNITHM cabinets.
 
 ---
 ## Fabrication
